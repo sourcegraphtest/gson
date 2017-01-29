@@ -1,0 +1,33 @@
+{
+  "sourceDirectory" : "src/main/java",
+  "testSourceDirectory" : "src/test/java",
+  "repositories" : [ {
+    "id" : "sonatype-nexus-snapshots",
+    "url" : "https://oss.sonatype.org/content/repositories/snapshots"
+  }, {
+    "id" : "central",
+    "url" : "https://repo.maven.apache.org/maven2"
+  } ],
+  "dependencies" : [ {
+    "groupId" : "com.google.code.gson",
+    "artifactId" : "gson",
+    "version" : "2.7",
+    "scope" : "compile",
+    "systemPath" : null,
+    "packages" : [ "com.google.gson.internal", "com.google.gson.internal.bind", "com.google.gson.stream", "com.google.gson.annotations", "com.google.gson", "com.google.gson.internal.bind.util", "com.google.gson.reflect" ]
+  }, {
+    "groupId" : "javax.annotation",
+    "artifactId" : "jsr250-api",
+    "version" : "1.0",
+    "scope" : "compile",
+    "systemPath" : null,
+    "packages" : [ "javax.annotation", "javax.annotation.security" ]
+  }, {
+    "groupId" : "junit",
+    "artifactId" : "junit",
+    "version" : "3.8.2",
+    "scope" : "test",
+    "systemPath" : null,
+    "packages" : [ "junit.extensions", "junit.awtui", "junit.swingui", "junit.textui", "junit.runner", "junit.framework" ]
+  } ]
+}

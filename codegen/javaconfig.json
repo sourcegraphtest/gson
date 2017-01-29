@@ -1,0 +1,19 @@
+{
+  "sourceDirectory" : "src/main/java",
+  "testSourceDirectory" : "src/test/java",
+  "repositories" : [ {
+    "id" : "sonatype-nexus-snapshots",
+    "url" : "https://oss.sonatype.org/content/repositories/snapshots"
+  }, {
+    "id" : "central",
+    "url" : "https://repo.maven.apache.org/maven2"
+  } ],
+  "dependencies" : [ {
+    "groupId" : "junit",
+    "artifactId" : "junit",
+    "version" : "3.8.2",
+    "scope" : "test",
+    "systemPath" : null,
+    "packages" : [ "junit.extensions", "junit.awtui", "junit.swingui", "junit.textui", "junit.runner", "junit.framework" ]
+  } ]
+}
