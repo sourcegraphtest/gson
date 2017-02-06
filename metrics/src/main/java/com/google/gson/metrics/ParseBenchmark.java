@@ -16,6 +16,10 @@
 
 package com.google.gson.metrics;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.caliper.Param;
 import com.google.caliper.Runner;
 import com.google.caliper.SimpleBenchmark;
@@ -24,21 +28,12 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-import java.io.CharArrayReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
+
+import java.io.*;
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import org.codehaus.jackson.JsonFactory;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.DeserializationConfig;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
 
 /**
  * Measure Gson and Jackson parsing and binding performance.
@@ -197,8 +192,8 @@ public final class ParseBenchmark extends SimpleBenchmark {
   private static class JacksonStreamParser implements Parser {
     public void parse(char[] data, Document document) throws Exception {
       JsonFactory jsonFactory = new JsonFactory();
-      org.codehaus.jackson.JsonParser jp = jsonFactory.createJsonParser(new CharArrayReader(data));
-      jp.configure(org.codehaus.jackson.JsonParser.Feature.CANONICALIZE_FIELD_NAMES, false);
+      com.fasterxml.jackson.core.JsonParser jp = jsonFactory.createJsonParser(new CharArrayReader(data));
+//      jp.configure(org.codehaus.jackson.JsonParser.Feature.CANONICALIZE_FIELD_NAMES, false);
       int depth = 0;
       do {
         switch (jp.nextToken()) {
@@ -246,8 +241,8 @@ public final class ParseBenchmark extends SimpleBenchmark {
     private static ObjectMapper mapper = new ObjectMapper();
 
     static {
-      mapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-      mapper.configure(DeserializationConfig.Feature.AUTO_DETECT_FIELDS, true);
+//      mapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+//      mapper.configure(DeserializationConfig.Feature.AUTO_DETECT_FIELDS, true);
       mapper.setDateFormat(new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy"));
     }
 
